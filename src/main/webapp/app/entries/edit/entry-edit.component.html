@@ -1,0 +1,16 @@
+<div *ngIf="entry">
+	<h2>Edit Contact Information for {{entry.firstName}} {{entry.lastName}}</h2>
+
+	<form class="col-sm-4">
+		<div class="form-group">
+			<label for="email">Email</label>
+			<input type="text" [(ngModel)]="entry.email" name="email" class="form-control" id="email">
+		</div>
+		<div class="form-group">
+			<label for="phone">Phone</label>
+			<input type="text" [(ngModel)]="entry.phone" name="phone" class="form-control" id="phone">
+		</div>
+
+		<button (click)="backToDirectory()" class="btn btn-default" type="button">Done</button>
+	</form>
+</div>

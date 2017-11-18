@@ -1,0 +1,8 @@
+entity Entry{
+        id Integer required,
+        machine String required,
+        category String required,
+        directory String required,
+        project String required,
+        createDate ZonedDateTime
+}	

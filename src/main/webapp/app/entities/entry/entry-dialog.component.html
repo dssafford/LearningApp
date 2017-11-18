@@ -1,0 +1,76 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myEntryLabel">Create or edit a Entry</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!entry.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="entry.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_machine">Machine</label>
+            <input type="text" class="form-control" name="machine" id="field_machine"
+                [(ngModel)]="entry.machine" required />
+            <div [hidden]="!(editForm.controls.machine?.dirty && editForm.controls.machine?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.machine?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_category">Category</label>
+            <input type="text" class="form-control" name="category" id="field_category"
+                [(ngModel)]="entry.category" required />
+            <div [hidden]="!(editForm.controls.category?.dirty && editForm.controls.category?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.category?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_directory">Directory</label>
+            <input type="text" class="form-control" name="directory" id="field_directory"
+                [(ngModel)]="entry.directory" required />
+            <div [hidden]="!(editForm.controls.directory?.dirty && editForm.controls.directory?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.directory?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_project">Project</label>
+            <input type="text" class="form-control" name="project" id="field_project"
+                [(ngModel)]="entry.project" required />
+            <div [hidden]="!(editForm.controls.project?.dirty && editForm.controls.project?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.project?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_createDate">Create Date</label>
+            <div class="d-flex">
+                <input id="field_createDate" type="datetime-local" class="form-control" name="createDate" [(ngModel)]="entry.createDate"
+                  />
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
